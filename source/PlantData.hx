@@ -1,13 +1,11 @@
+// Plant.hx
+// Small data class for storing the unique data representing a plant.
+// Probably edited in the future.
 package;
 
-class Plant {
-    // Id unique to the plant. Used for various reasons, like seed packet creation-
+class PlantData {
     public final ID: Int;
-
-    // Sun cost of the plant. Always positive, negated when the plant is selected.
     public final sunCost: Int;
-
-    // Path to the sprite animation of the plant.
     public final sprite: String;
 
     public function new(ID: Int, sunCost: Int, sprite: String) {
@@ -16,3 +14,4 @@ class Plant {
         this.sprite = sprite;
     }
 }
+

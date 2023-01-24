@@ -1,8 +1,10 @@
+// TimedAction.hx
+// An utility class which executes a fixed action every number of seconds.
+// May be removed in the future if turns out to be unecessary.
+
 package;
 import flixel.FlxBasic;
 
-// Executes an action every number of seconds.
-// May be deleted in the future.
 class TimedAction extends FlxBasic {
     var state: Float;
     var seconds: Float;
