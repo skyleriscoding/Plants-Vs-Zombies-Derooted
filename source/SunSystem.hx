@@ -6,7 +6,7 @@ import flixel.text.FlxText;
 
 class Sun extends LevelObject {
 	public function new(parent:LevelState) {
-		super(parent, new FlxSprite(Math.floor(Math.random() * 1280), 0).loadGraphic("assets/images/sun.png"));
+		super(parent, new FlxSprite(Math.floor(Math.random() * 1280), 0).loadGraphic("assets/images/ui/sun.png"));
 
 		this.onClick = () -> {
 			this.parent.updateSunCost(50);
@@ -22,13 +22,15 @@ class Sun extends LevelObject {
 
 class SunSystem extends LevelObject {
     public var amount: Int;
+	var night: Bool;
 	var spawnTimer:Float;
     var label: FlxText;
 
-    public function new(parent: LevelState) {
-		super(parent, new FlxSprite(20, 20).loadGraphic("assets/images/sundisplayer.png"));
+    public function new(parent: LevelState, night: Bool) {
+		super(parent, new FlxSprite(20, 20).loadGraphic("assets/images/ui/sundisplayer.png"));
 
-        this.amount = 50;
+        this.amount = 0;
+		this.night = night;
         this.spawnTimer = 0.0;
 
 		this.label = new FlxText(65, 165, Std.string(this.amount), 72);
@@ -39,11 +41,13 @@ class SunSystem extends LevelObject {
     override public function update(elapsed: Float) {
         super.update(elapsed);
 
-        this.spawnTimer += elapsed;
-        if (this.spawnTimer > 5.0) {
-            this.spawnTimer = 0.0;
-            this.parent.add(new Sun(this.parent));
-        }
+		if (!this.night) {
+        	this.spawnTimer += elapsed;
+        	if (this.spawnTimer > 5.0) {
+            	this.spawnTimer = 0.0;
+            	this.parent.add(new Sun(this.parent));
+        	}
+		}
     }
 
     public function updateSunCost(delta: Int): Bool {

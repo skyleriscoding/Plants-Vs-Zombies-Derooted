@@ -1,0 +1,18 @@
+{
+    "#comment": "botanical textbook in JSON format",
+    "plants": 
+    [
+        {
+            "#id": "peashooter",
+            "kind": "shooter",
+            "cost": 100,
+            "sprite": "assets/images/plants/peashooter.png"
+        },
+        {
+            "#id": "sunflower",
+            "kind": "producer",
+            "cost": 50,
+            "sprite": "assets/images/plants/sunflower.png"
+        }
+    ]
+}
